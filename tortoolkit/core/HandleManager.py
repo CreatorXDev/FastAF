@@ -9,6 +9,8 @@ import re
 import shutil
 import time
 from functools import partial
+import pytz
+from datetime import datetime
 
 import psutil
 from pyrogram import __version__ as pyrover
@@ -644,7 +646,7 @@ async def set_password_zip(message):
 
 
 async def start_handler(event):
-    msg = "Hello This is TorToolkitX running on heroku an instance of <a href='https://github.com/KangersHub/TorToolkitX'>This Repo</a>. Try the repo for yourself and dont forget to put a STAR and fork."
+    msg = "Hello This is TorToolkitX modified by @KINGS_MIRROR"
     await event.reply(msg, parse_mode="html")
 
 
@@ -841,7 +843,6 @@ async def about_me(message):
         "10.Overall download and upload progress.\n"
         "11.Pixeldrain DL support.\n"
         "12.Alert on when the bot boots up.\n"
-        "<b>13.Fixed Heroku Stuff.</b>\n"
     )
 
     await message.reply(msg, parse_mode="html")
@@ -931,9 +932,12 @@ def term_handler(signum, frame, client):
 
 async def booted(client):
     chats = get_val("ALD_USR")
+    TIMEZONE ='Asia/Kolkata'
+    kie = datetime.now(pytz.timezone(f'{TIMEZONE}'))
+    jam = kie.strftime('\n📅 Date: %d/%m/%Y\n⏰ Time: %I:%M%P\n🌃 TimeZone: Asia/Kolkata')
     for i in chats:
         try:
-            await client.send_message(i, "The bot is booted and is ready to use.")
+            await client.send_message(i, f"**🤖 BOT Rebooted 🔄**\n**{jam}**\n\n**ℹ️ Please Re-Download again if Any downloads got Canceled during Reboot**\n\n**#Rebooted**")
         except Exception:
             torlog.info(f"Not found the entity {i}")
 
