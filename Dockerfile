@@ -1,6 +1,6 @@
 #________________________________________________________________________________________________________________________
 # Insatll Some Required Files and Tools for TTK
-FROM yashk7/tortoolkitbase
+FROM gautam1834/mltb:latest
 #________________________________________________________________________________________________________________________
 # Install TTK Python Requirements.
 COPY requirements.txt .
